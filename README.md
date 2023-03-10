@@ -1,6 +1,6 @@
 # 16-Bit Arithmetic Logic Unit (ALU) & ALU Tester
 
-SUTD ISTD 2023 Computation Structures 1D ALU Project.
+SUTD CSD 2023 Computation Structures 1D ALU Project.
 
 Team 16:
 
