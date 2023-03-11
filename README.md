@@ -1,8 +1,8 @@
 # 16-Bit Arithmetic Logic Unit & Tester
 
-SUTD CSD 2023 Computation Structures 1D ALU Project.
+### SUTD CSD 2023 Computation Structures 1D ALU Project.
 
-Team 16:
+### Team 16:
 
 - Shwetha Suresh Iyer
 - Nada Khan Suratee
