@@ -1,14 +1,15 @@
 # 16-Bit Arithmetic Logic Unit (ALU) & ALU Tester
 
-SUTD ISTD 2020 Computation Structures 1D ALU Project.
+SUTD CSD 2023 Computation Structures 1D ALU Project.
 
-Team 03-2:
+Team 16:
 
-- [James Raphael Tiovalen](https://github.com/jamestiotio) (Team Leader)
-- [Ng Yu Yan](https://github.com/ngyy3487)
-- [Sun Kairan](https://github.com/kairanskrr)
-- [Cheow Wei Da Nicholas](https://github.com/nicholascwd)
-- Jodi Tan Kai Yu
+- Shwetha Suresh Iyer
+- Nada Khan Suratee
+- Kishen s/o Durairajoo
+- Aisiri Deb Barma
+- Tan Hao Yi
+- Natalie Ang Zi Yi
 
 
 
@@ -30,40 +31,19 @@ This is the instruction set for the ALU.
 | 00 00X1    | SUBTRACT               | adder16      |
 | 00 0100    | MULTIPLY               | multiplier16 |
 | 00 0101    | FLOOR DIVISION         | multiplier16 |
-| 00 0110    | SIGNED MODULO          | multiplier16 |
-| 00 0111    | UNSIGNED MODULO        | multiplier16 |
-| 00 1000    | INCREMENT X            | increment16  |
-| 00 1001    | INCREMENT Y            | increment16  |
-| 00 1010    | DECREMENT X            | decrement16  |
-| 00 1011    | DECREMENT Y            | decrement16  |
-| 00 11XX    | FACTORIAL              | factorial    |
-| 01 0000    | ZERO                   | boolean16    |
 | 01 0001    | NOR                    | boolean16    |
-| 01 0010    | NOT CONVERSE           | boolean16    |
-| 01 0011    | NOT 'X'                | boolean16    |
-| 01 0100    | NOT IMPLY              | boolean16    |
-| 01 0101    | NOT 'Y'                | boolean16    |
 | 01 0110    | XOR                    | boolean16    |
 | 01 0111    | NAND                   | boolean16    |
 | 01 1000    | AND                    | boolean16    |
 | 01 1001    | XNOR                   | boolean16    |
 | 01 1010    | 'X'                    | boolean16    |
-| 01 1011    | IMPLY                  | boolean16    |
-| 01 1100    | 'Y'                    | boolean16    |
-| 01 1101    | CONVERSE               | boolean16    |
 | 01 1110    | OR                     | boolean16    |
-| 01 1111    | ONE                    | boolean16    |
 | 10 0000    | SHIFT LEFT             | shifter16    |
 | 10 0001    | SHIFT RIGHT            | shifter16    |
 | 10 0011    | SHIFT RIGHT ARITHMETIC | shifter16    |
-| 10 0100    | ROTATE LEFT            | shifter16    |
-| 10 0101    | ROTATE RIGHT           | shifter16    |
-| 10 11XX    | MIRROR                 | shifter16    |
 | 11 001X    | CMPEQ                  | comparator16 |
 | 11 010X    | CMPLT                  | comparator16 |
 | 11 011X    | CMPLE                  | comparator16 |
-| 11 101X    | MAXIMUM                | comparator16 |
-| 11 110X    | MINIMUM                | comparator16 |
 
 
 
