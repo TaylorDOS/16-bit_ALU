@@ -34,25 +34,6 @@ module comparator16 (
             result[0] = b0;
         }
       
-      b1:
-        // Chooses max(x, y) or min(x, y) based on alufn[2:1]
-        case (alufn[2:1]) {
-          b01:
-            if (x > y) {
-              result = x;
-            }
-            else {
-              result = y;
-            }
-
-          b10:
-            if (x < y) {
-              result = x;
-            }
-            else {
-              result = y;
-            }
-        }
     }
     
   }

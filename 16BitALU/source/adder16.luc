@@ -12,14 +12,11 @@ module adder16 (
     output err
   ) {
 
-  sig result[16];  // This signal is used to store the result for the calculation of z v n
+  sig result[16];  // Store the result for the calculation of z v n
 
   multiplier16 multiplier16 (.x(x), .y(y), .alufn(alufn[5:0]));
-  increment16 increment16 (.x(x), .y(y), .alufn(alufn[5:0]));
-  decrement16 decrement16 (.x(x), .y(y), .alufn(alufn[5:0]));
 
   .clk(clk), .rst(rst) {
-      factorial factorial(.x(x));
   }
 
   always {
@@ -43,19 +40,6 @@ module adder16 (
       b01:
         result = multiplier16.s;
         err = multiplier16.error;
-
-      b10:
-        case (alufn[1]) {
-          b0:
-            result = increment16.s;
-          
-          b1:
-            result = decrement16.s;
-        }
-      
-      // Other operations such as the builtin functions of $clog2(x) and $pow(x,y) require constants, and thus are not implementable
-      b11:
-        result = factorial.s;
 
       default:
         result = 16b0;
