@@ -17,7 +17,7 @@ module multiplier16 (
     divisor = 0;
     temp = 0;
 
-    // Multiplies (x*y), floor divides (x/y) or modulos (x%y) according to alufn[1:0]
+    // Multiplies (x*y), floor divides (x/y) or according to alufn[1:0]
     case (alufn[1:0]) {
       b00:
         s = x * y;
@@ -32,53 +32,6 @@ module multiplier16 (
           error = 1;
         }
 
-      b10: // Signed modulo
-        if (y != 0) { // Avoid dividing by zero
-          if (y[15] == 0) {
-            if (x[15] == 1) {
-              a = $unsigned(~x) + 1; // Two's complement
-              temp = $unsigned(a) - (($unsigned(a) / y) * y);
-              s = y - $unsigned(temp);
-            }
-
-            else {
-              s = x - ((x / y) * y);
-            }
-          }
-
-          else {
-            if (x[15] == 1) {
-              a = $unsigned(~x) + 1; // Two's complement
-              divisor = $unsigned(~y) + 1; // Two's complement
-              temp = $unsigned(a) - (($unsigned(a) / $unsigned(divisor)) * $unsigned(divisor));
-              s = $unsigned(~temp) + 1; // Two's complement
-            }
-
-            else {
-              divisor = $unsigned(~y) + 1; // Two's complement
-              temp = x - ((x / $unsigned(divisor)) * $unsigned(divisor));
-              s = $signed(y) + $unsigned(temp);
-            }
-          }
-        }
-
-        else {
-          s = x;
-          error = 1;
-        }
-
-      b11: // Unsigned modulo
-        if (y != 0) { // Avoid dividing by zero
-          s = x - ((x / y) * y);
-        }
-
-        else {
-          s = x;
-          error = 1;
-        }
-
-      default:
-        s = 16b0;
     }
   }
 }

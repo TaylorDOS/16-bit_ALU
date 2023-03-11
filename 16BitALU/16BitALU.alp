@@ -2,14 +2,12 @@
 <project name="16BitALU" board="Alchitry Au" language="Lucid" version="3">
   <files>
     <src>comparator16.luc</src>
-    <src>factorial.luc</src>
     <src top="true">au_top.luc</src>
     <src>multi_seven_seg.luc</src>
     <component>pipeline.luc</component>
     <component>counter.luc</component>
     <src>seven_seg.luc</src>
     <src>multi_dec_ctr.luc</src>
-    <src>increment16.luc</src>
     <src>decimal_counter.luc</src>
     <src>shifter16.luc</src>
     <src>adder16.luc</src>
@@ -18,7 +16,6 @@
     <src>auto_tester.luc</src>
     <src>manual_tester.luc</src>
     <src>multiplier16.luc</src>
-    <src>decrement16.luc</src>
     <component>reset_conditioner.luc</component>
     <component>edge_detector.luc</component>
     <src>statement_tester.luc</src>

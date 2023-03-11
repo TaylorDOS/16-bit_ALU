@@ -56,12 +56,7 @@ module manual_tester (
     seg_display.values = {4b0,4b0,4b0,4b0};
 
     io_led = {8b0,8b0,8b0};
-    //io_led[2][5:0] = alufn.q;
-    //io_led[2][2:0] = 3b000;
-    //io_led[2][0] = alu.z;
-    //io_led[2][1] = alu.v;
-    //io_led[2][2] = alu.n;
-    
+
     alufn.d = io_dip[2][5:0];
 
     case (state.q) {

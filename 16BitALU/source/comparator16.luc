@@ -1,6 +1,3 @@
-// We used the x and y signals instead of the z, v and n signals for the comparator
-// This is due to our implementation of additional instructions within the adder16 module (such as the floor division and modulo), which causes the resulting output to be not always of the correct format to be parsed as correct z, v and n signals
-
 module comparator16 (
     input x[16],
     input y[16],
@@ -9,9 +6,8 @@ module comparator16 (
   ) {
 
   always {
-    // Chooses min-max or basic comparator based on alufn[3]
     
-    // Only the least significant bit (LSB) gives the result of comparison operations
+    // LSB gives the result of comparison operations
     result[15:1] = 15b0;
 
     case (alufn[3]) {

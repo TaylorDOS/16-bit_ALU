@@ -1,4 +1,4 @@
-// This is the main 16-Bit ALU module
+// Main 16-Bit ALU module
 
 module alu16 (
     input clk,
@@ -13,7 +13,6 @@ module alu16 (
     output err
   ) {
 
-  // Initialise modules
   .clk(clk), .rst(rst) {
       adder16 addormul16 (.x(x), .y(y), .alufn(alufn[5:0]));
   }
@@ -22,7 +21,7 @@ module alu16 (
   comparator16 comparator16 (.x(x), .y(y), .alufn(alufn[5:0]));
 
   always {
-    // The z, v, n outputs can only be non-zero when carrying out arithmetic operations (ADD, SUB, MUL, FLOORDIV or MODULO)
+    // The z, v, n outputs can only be non-zero when carrying out arithmetic operations (ADD, SUB, MUL, FLOORDIV)
     z = 0;
     v = 0;
     n = 0;
