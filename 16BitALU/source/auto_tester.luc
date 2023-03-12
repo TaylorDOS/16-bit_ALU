@@ -233,7 +233,7 @@ module auto_tester (
         io_sel = test_9.io_sel;
         opcode_led = test_9.opcode_led;
         test_9.start = 1;
-        if (test_15.done) {
+        if (test_9.done) {
           autostate.d = autostate.TEST_10;
         }
         if (compulsory_error) {
