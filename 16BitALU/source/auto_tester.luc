@@ -32,32 +32,32 @@ module auto_tester (
       statement_tester test_5 (#TEST_ID_HIGH(0), #TEST_ID_LOW(5), #INPUT_X(16h7fff), #INPUT_Y(16h0000), #OPCODE(6b000100), #EXPECTED_OUTPUT(16h0000));
       statement_tester test_6 (#TEST_ID_HIGH(0), #TEST_ID_LOW(6), #INPUT_X(16h0420), #INPUT_Y(16h0069), #OPCODE(6b000101), #EXPECTED_OUTPUT(16h000a));
       statement_tester test_7 (#TEST_ID_HIGH(0), #TEST_ID_LOW(7), #INPUT_X(16h0069), #INPUT_Y(16h0000), #OPCODE(6b000101), #EXPECTED_OUTPUT(16h0069));
-      statement_tester test_8 (#TEST_ID_HIGH(2), #TEST_ID_LOW(6), #INPUT_X(16h2af0), #INPUT_Y(16hafe0), #OPCODE(6b010001), #EXPECTED_OUTPUT(16h500f));
-      statement_tester test_9 (#TEST_ID_HIGH(2), #TEST_ID_LOW(7), #INPUT_X(16hff00), #INPUT_Y(16h00ff), #OPCODE(6b010001), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_10 (#TEST_ID_HIGH(3), #TEST_ID_LOW(6), #INPUT_X(16hffff), #INPUT_Y(16hffff), #OPCODE(6b010110), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_11 (#TEST_ID_HIGH(3), #TEST_ID_LOW(7), #INPUT_X(16hffff), #INPUT_Y(16h0000), #OPCODE(6b010110), #EXPECTED_OUTPUT(16hffff));
-      statement_tester test_12 (#TEST_ID_HIGH(3), #TEST_ID_LOW(8), #INPUT_X(16h2af0), #INPUT_Y(16hafe0), #OPCODE(6b010111), #EXPECTED_OUTPUT(16hd51f));
-      statement_tester test_13 (#TEST_ID_HIGH(3), #TEST_ID_LOW(9), #INPUT_X(16hff00), #INPUT_Y(16h00ff), #OPCODE(6b010111), #EXPECTED_OUTPUT(16hffff));
-      statement_tester test_14 (#TEST_ID_HIGH(4), #TEST_ID_LOW(0), #INPUT_X(16h0000), #INPUT_Y(16hffff), #OPCODE(6b011000), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_15 (#TEST_ID_HIGH(4), #TEST_ID_LOW(1), #INPUT_X(16hffff), #INPUT_Y(16hffff), #OPCODE(6b011000), #EXPECTED_OUTPUT(16hffff));
-      statement_tester test_16 (#TEST_ID_HIGH(4), #TEST_ID_LOW(2), #INPUT_X(16h2af0), #INPUT_Y(16hafe0), #OPCODE(6b011001), #EXPECTED_OUTPUT(16h7aef));
-      statement_tester test_17 (#TEST_ID_HIGH(4), #TEST_ID_LOW(3), #INPUT_X(16hff00), #INPUT_Y(16h00ff), #OPCODE(6b011001), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_18 (#TEST_ID_HIGH(4), #TEST_ID_LOW(4), #INPUT_X(16h2121), #INPUT_Y(16h4242), #OPCODE(6b011010), #EXPECTED_OUTPUT(16h2121));
-      statement_tester test_19 (#TEST_ID_HIGH(4), #TEST_ID_LOW(5), #INPUT_X(16h4242), #INPUT_Y(16h4242), #OPCODE(6b011010), #EXPECTED_OUTPUT(16h4242));
-      statement_tester test_20 (#TEST_ID_HIGH(5), #TEST_ID_LOW(2), #INPUT_X(16h0000), #INPUT_Y(16hffff), #OPCODE(6b011110), #EXPECTED_OUTPUT(16hffff));
-      statement_tester test_21 (#TEST_ID_HIGH(5), #TEST_ID_LOW(3), #INPUT_X(16h0001), #INPUT_Y(16h0010), #OPCODE(6b011110), #EXPECTED_OUTPUT(16h0011));
-      statement_tester test_22 (#TEST_ID_HIGH(5), #TEST_ID_LOW(6), #INPUT_X(16hffff), #INPUT_Y(16h0001), #OPCODE(6b100000), #EXPECTED_OUTPUT(16hfffe));
-      statement_tester test_23 (#TEST_ID_HIGH(5), #TEST_ID_LOW(7), #INPUT_X(16hffff), #INPUT_Y(16h0008), #OPCODE(6b100000), #EXPECTED_OUTPUT(16hff00));
-      statement_tester test_24 (#TEST_ID_HIGH(5), #TEST_ID_LOW(8), #INPUT_X(16hffff), #INPUT_Y(16h0001), #OPCODE(6b100001), #EXPECTED_OUTPUT(16h7fff));
-      statement_tester test_25 (#TEST_ID_HIGH(5), #TEST_ID_LOW(9), #INPUT_X(16hffff), #INPUT_Y(16h0008), #OPCODE(6b100001), #EXPECTED_OUTPUT(16h00ff));
-      statement_tester test_26 (#TEST_ID_HIGH(6), #TEST_ID_LOW(0), #INPUT_X(16hffff), #INPUT_Y(16h0001), #OPCODE(6b100011), #EXPECTED_OUTPUT(16hffff));
-      statement_tester test_27 (#TEST_ID_HIGH(6), #TEST_ID_LOW(1), #INPUT_X(16h3fff), #INPUT_Y(16h0008), #OPCODE(6b100011), #EXPECTED_OUTPUT(16h003f));
-      statement_tester test_28 (#TEST_ID_HIGH(6), #TEST_ID_LOW(8), #INPUT_X(16h7fff), #INPUT_Y(16h7fff), #OPCODE(6b110011), #EXPECTED_OUTPUT(16h0001));
-      statement_tester test_29 (#TEST_ID_HIGH(6), #TEST_ID_LOW(9), #INPUT_X(16h7fff), #INPUT_Y(16h0000), #OPCODE(6b110011), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_30 (#TEST_ID_HIGH(7), #TEST_ID_LOW(0), #INPUT_X(16h7fff), #INPUT_Y(16h7fff), #OPCODE(6b110101), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_31 (#TEST_ID_HIGH(7), #TEST_ID_LOW(1), #INPUT_X(16h0000), #INPUT_Y(16h7fff), #OPCODE(6b110101), #EXPECTED_OUTPUT(16h0001));
-      statement_tester test_32 (#TEST_ID_HIGH(7), #TEST_ID_LOW(2), #INPUT_X(16h7fff), #INPUT_Y(16h0000), #OPCODE(6b110111), #EXPECTED_OUTPUT(16h0000));
-      statement_tester test_33 (#TEST_ID_HIGH(7), #TEST_ID_LOW(3), #INPUT_X(16h2121), #INPUT_Y(16h2121), #OPCODE(6b110111), #EXPECTED_OUTPUT(16h0001));
+      statement_tester test_8 (#TEST_ID_HIGH(0), #TEST_ID_LOW(8), #INPUT_X(16h2af0), #INPUT_Y(16hafe0), #OPCODE(6b010001), #EXPECTED_OUTPUT(16h500f));
+      statement_tester test_9 (#TEST_ID_HIGH(0), #TEST_ID_LOW(9), #INPUT_X(16hff00), #INPUT_Y(16h00ff), #OPCODE(6b010001), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_10 (#TEST_ID_HIGH(1), #TEST_ID_LOW(0), #INPUT_X(16hffff), #INPUT_Y(16hffff), #OPCODE(6b010110), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_11 (#TEST_ID_HIGH(1), #TEST_ID_LOW(1), #INPUT_X(16hffff), #INPUT_Y(16h0000), #OPCODE(6b010110), #EXPECTED_OUTPUT(16hffff));
+      statement_tester test_12 (#TEST_ID_HIGH(1), #TEST_ID_LOW(2), #INPUT_X(16h2af0), #INPUT_Y(16hafe0), #OPCODE(6b010111), #EXPECTED_OUTPUT(16hd51f));
+      statement_tester test_13 (#TEST_ID_HIGH(1), #TEST_ID_LOW(3), #INPUT_X(16hff00), #INPUT_Y(16h00ff), #OPCODE(6b010111), #EXPECTED_OUTPUT(16hffff));
+      statement_tester test_14 (#TEST_ID_HIGH(1), #TEST_ID_LOW(4), #INPUT_X(16h0000), #INPUT_Y(16hffff), #OPCODE(6b011000), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_15 (#TEST_ID_HIGH(1), #TEST_ID_LOW(5), #INPUT_X(16hffff), #INPUT_Y(16hffff), #OPCODE(6b011000), #EXPECTED_OUTPUT(16hffff));
+      statement_tester test_16 (#TEST_ID_HIGH(1), #TEST_ID_LOW(6), #INPUT_X(16h2af0), #INPUT_Y(16hafe0), #OPCODE(6b011001), #EXPECTED_OUTPUT(16h7aef));
+      statement_tester test_17 (#TEST_ID_HIGH(1), #TEST_ID_LOW(7), #INPUT_X(16hff00), #INPUT_Y(16h00ff), #OPCODE(6b011001), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_18 (#TEST_ID_HIGH(1), #TEST_ID_LOW(8), #INPUT_X(16h2121), #INPUT_Y(16h4242), #OPCODE(6b011010), #EXPECTED_OUTPUT(16h2121));
+      statement_tester test_19 (#TEST_ID_HIGH(1), #TEST_ID_LOW(9), #INPUT_X(16h4242), #INPUT_Y(16h4242), #OPCODE(6b011010), #EXPECTED_OUTPUT(16h4242));
+      statement_tester test_20 (#TEST_ID_HIGH(2), #TEST_ID_LOW(0), #INPUT_X(16h0000), #INPUT_Y(16hffff), #OPCODE(6b011110), #EXPECTED_OUTPUT(16hffff));
+      statement_tester test_21 (#TEST_ID_HIGH(2), #TEST_ID_LOW(1), #INPUT_X(16h0001), #INPUT_Y(16h0010), #OPCODE(6b011110), #EXPECTED_OUTPUT(16h0011));
+      statement_tester test_22 (#TEST_ID_HIGH(2), #TEST_ID_LOW(2), #INPUT_X(16hffff), #INPUT_Y(16h0001), #OPCODE(6b100000), #EXPECTED_OUTPUT(16hfffe));
+      statement_tester test_23 (#TEST_ID_HIGH(2), #TEST_ID_LOW(3), #INPUT_X(16hffff), #INPUT_Y(16h0008), #OPCODE(6b100000), #EXPECTED_OUTPUT(16hff00));
+      statement_tester test_24 (#TEST_ID_HIGH(2), #TEST_ID_LOW(4), #INPUT_X(16hffff), #INPUT_Y(16h0001), #OPCODE(6b100001), #EXPECTED_OUTPUT(16h7fff));
+      statement_tester test_25 (#TEST_ID_HIGH(2), #TEST_ID_LOW(5), #INPUT_X(16hffff), #INPUT_Y(16h0008), #OPCODE(6b100001), #EXPECTED_OUTPUT(16h00ff));
+      statement_tester test_26 (#TEST_ID_HIGH(2), #TEST_ID_LOW(6), #INPUT_X(16hffff), #INPUT_Y(16h0001), #OPCODE(6b100011), #EXPECTED_OUTPUT(16hffff));
+      statement_tester test_27 (#TEST_ID_HIGH(2), #TEST_ID_LOW(7), #INPUT_X(16h3fff), #INPUT_Y(16h0008), #OPCODE(6b100011), #EXPECTED_OUTPUT(16h003f));
+      statement_tester test_28 (#TEST_ID_HIGH(2), #TEST_ID_LOW(8), #INPUT_X(16h7fff), #INPUT_Y(16h7fff), #OPCODE(6b110011), #EXPECTED_OUTPUT(16h0001));
+      statement_tester test_29 (#TEST_ID_HIGH(2), #TEST_ID_LOW(9), #INPUT_X(16h7fff), #INPUT_Y(16h0000), #OPCODE(6b110011), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_30 (#TEST_ID_HIGH(3), #TEST_ID_LOW(0), #INPUT_X(16h7fff), #INPUT_Y(16h7fff), #OPCODE(6b110101), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_31 (#TEST_ID_HIGH(3), #TEST_ID_LOW(1), #INPUT_X(16h0000), #INPUT_Y(16h7fff), #OPCODE(6b110101), #EXPECTED_OUTPUT(16h0001));
+      statement_tester test_32 (#TEST_ID_HIGH(3), #TEST_ID_LOW(2), #INPUT_X(16h7fff), #INPUT_Y(16h0000), #OPCODE(6b110111), #EXPECTED_OUTPUT(16h0000));
+      statement_tester test_33 (#TEST_ID_HIGH(3), #TEST_ID_LOW(3), #INPUT_X(16h2121), #INPUT_Y(16h2121), #OPCODE(6b110111), #EXPECTED_OUTPUT(16h0001));
     }
   }
 
@@ -77,7 +77,7 @@ module auto_tester (
     error_edge.in = required_error.out;
     compulsory_error = error_edge.out;
 
-    seg_display.values = {4b0,4b0,4b0,4b0};
+    seg_display.values = {4b1,4b1,4b1,4b1};
 
     test_0.start = 0;
     test_1.start = 0;
@@ -529,15 +529,17 @@ module auto_tester (
         if (compulsory_error) {
           autostate.d = autostate.ERROR;
         }
-
       autostate.DONE:
+        io_seg = 8b10100001; //display d when done
+        io_sel = 4b1110;
+        opcode_led = 0;
+        
         if (restart) {
           autostate.d = autostate.TEST_0;
         }
-
       autostate.ERROR:
         opcode_led = 6b000000;
-        seg_display.values = {4he, 4he, 4he, 4he}; // EEEE
+        seg_display.values = {4he, 4he, 4he, 4he}; // trigger error and display EEEE
         io_seg = ~seg_display.seg;
         io_sel = ~seg_display.sel;
         if (restart) {
