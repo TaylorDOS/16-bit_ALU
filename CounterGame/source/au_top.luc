@@ -3,6 +3,7 @@ module au_top (
     input rst_n,            // reset button (active low)
     output led [8],         // 8 user controllable LEDs
     input usb_rx,           // USB->Serial input
+    output outled,          // data to LED strip
     output usb_tx,          // USB->Serial output
     output io_led [3][8],   // LEDs on IO Shield
     output io_seg [8],      // 7-segment LEDs on IO Shield
@@ -12,6 +13,10 @@ module au_top (
   ) {
   
   sig rst;                  // reset signal
+  
+  const LEDCOLOR = {hFF0000, h00FF00, h0000FF}; // blue for the third LED, red for the second LED, green for the first LED (nearest to the connector)
+  
+  ws2812b_writer led_strip(#PIXEL_COUNT(64), .clk(clk), .rst(rst)); //set for 64 pixels
   
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
@@ -65,5 +70,9 @@ module au_top (
     seg.values = dec_ctr.digits;
     io_seg = ~seg.seg;
     io_sel = ~seg.sel;
+    
+    led_strip.update=1; //sample write 
+    led_strip.color=LEDCOLOR[led_strip.pixel]; 
+    outled=led_strip.led;
   }
 }
