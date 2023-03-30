@@ -1,45 +1,64 @@
 module game_LED (
     input clk,  // clock
     input rst,  // reset
-    
-    input pixels[64],
-    input color[1],
-    
+    input dot_location[16],
+    input column1output[16],
+    input column2output[16],
+    input column3output[16],
+    input column4output[16],
+    input column5output[16],
+    input column6output[16],
+    input column7output[16],
+    input column8output[16],
+    //input pixels[64],
+    //input color[1],
     output out
     
   ) {
   
   const COLOR = { // GRB in reverse
-    hf01000, // PURPLE
-    h000110, // ORANGE
     h100000, // BLUE
-    h100010, // CYAN
-    h00f010, // YELLOW
-    h101000, // MAGENTA
-    h000010, // GREEN
     h001000  // RED
   };
   
   .clk(clk) {
     .rst(rst) {
-      ws2812b_writer led_strip(#PIXEL_COUNT(64));
+      ws2812b_writer led_strip(#PIXEL_COUNT(64)); //should we consider slow clk?
     }
   }
   
-  decoder pixels_out(#WIDTH(6)); //what is this, log2 64 = 6
+  decoder pixels_out(#WIDTH(6)); //what is this?, log2 64 = 6
   
   sig p_color;
+  var row1;
+  var row2;
+  var row3;
+  var row4;
+  var row5;
+  var row6;
+  var row7;
+  var row8;
+  var pixels;
   
   always {
     led_strip.update = 1;  // LED always updating
     pixels_out.in = led_strip.pixel;
+    row1 = column1output[7] + column2output[7]+column3output[7]+column4output[7]+column5output[7]+column6output[7]+column7output[7]+column8output[7];
+    row3 = column1output[5] + column2output[5]+column3output[5]+column4output[5]+column5output[5]+column6output[5]+column7output[5]+column8output[5];
+    row5 = column1output[3] + column2output[3]+column3output[3]+column4output[3]+column5output[3]+column6output[3]+column7output[3]+column8output[3];
+    row7 = column1output[1] + column2output[1]+column3output[1]+column4output[1]+column5output[1]+column6output[1]+column7output[1]+column8output[1];
+    row2 = column8output[6] + column7output[6]+column6output[6]+column5output[6]+column4output[6]+column3output[6]+column2output[6]+column1output[6];
+    row4 = column8output[4] + column7output[4]+column6output[4]+column5output[4]+column4output[4]+column3output[4]+column2output[4]+column1output[4];
+    row6 = column8output[2] + column7output[2]+column6output[2]+column5output[2]+column4output[2]+column3output[2]+column2output[2]+column1output[2];
+    row8 = column8output[0] + column7output[0]+column6output[0]+column5output[0]+column4output[0]+column3output[0]+column2output[0]+column1output[0];
+    pixels = row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8;
     
     p_color = |(pixels & pixels_out.out);
     if (p_color) {
-      led_strip.color = COLOR[color];
+      led_strip.color = h100000;
     } else {
       led_strip.color = 0;
-    }
+    } 
     out = led_strip.led;
   }
 }

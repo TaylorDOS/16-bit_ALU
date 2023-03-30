@@ -1,19 +1,12 @@
 module game_miniBeta (
-    input p1_button,
-    input p2_button,
+    input main_button,
+    input reset_button,
     
     input clk,  // clock
     input rst,  // reset
-    
-    output debug_out[16],
-    output p1_out[16],
-    output p2_out[16],
-    output debug_slowclock,
-    output debug_vcclock,
-   
-    
     output decimal_counter_increase,
-    output decimal_counter_rst
+    output decimal_counter_rst,
+    output led_data
   ) {
   
   //temp variables
@@ -23,31 +16,31 @@ module game_miniBeta (
   alu game_alu;
 
   .clk(clk){
-    edge_detector edge_detector_variableCounter (#RISE(1), #FALL(0));
-    edge_detector game_timer_detector(#RISE(1), #FALL(0));
+    //edge_detector edge_detector_variableCounter (#RISE(1), #FALL(0));
+    //edge_detector game_timer_detector(#RISE(1), #FALL(0));
     
     .rst(rst){
       game_CU game_controlunit;
       game_miniRegfiles players;
-      
-      variable_counter vc;
-      counter slow_timer(#SIZE(1),#DIV(26)); 
+      game_LED display_driver;
+      //variable_counter vc;
+      //counter slow_timer(#SIZE(1),#DIV(26)); 
 
     }
   }
   always {
     
     //edge detectors
-    game_timer_detector.in = slow_timer.value; // 30 second timer detector
-    edge_detector_variableCounter.in = vc.out; // random counter increase signal 
+    //game_timer_detector.in = slow_timer.value; // 30 second timer detector
+    //edge_detector_variableCounter.in = vc.out; // random counter increase signal 
     
     //pass timer and counter signals to CU unit 
-    game_controlunit.increase_counter = edge_detector_variableCounter.out;
-    game_controlunit.decrease_timer = game_timer_detector.out;
+    //game_controlunit.increase_counter = edge_detector_variableCounter.out;
+    //game_controlunit.decrease_timer = game_timer_detector.out;
     
     //pass button press signal to CU unit
-    game_controlunit.p1_button = p1_button;
-    game_controlunit.p2_button = p2_button;
+    game_controlunit.main_button = main_button;
+    game_controlunit.reset_button = reset_button;
     
     //output of CU to increase 7segment
     decimal_counter_increase = game_controlunit.decimal_counter_increase;
@@ -62,6 +55,16 @@ module game_miniBeta (
     
     //bootstrap reg_b output to CU for convenient branching conditions
     game_controlunit.regfile_datain = players.out_b;
+    
+    display_driver.dot_location = players.dot_loc;
+    display_driver.column1output = players.column1output;
+    display_driver.column2output = players.column2output;
+    display_driver.column3output = players.column3output;
+    display_driver.column4output = players.column4output;
+    display_driver.column5output = players.column5output;
+    display_driver.column6output = players.column6output;
+    display_driver.column7output = players.column7output;
+    display_driver.column8output = players.column8output;
     
     //asel mux
     case(game_controlunit.asel){
@@ -99,16 +102,7 @@ module game_miniBeta (
           players.data = game_alu.out;
     }
     
-    //for debugging
-  //  debug_out[3:0] = players.all_buttons;
-  //  debug_out[7:4] = players.out;    
-  //  debug_out = game_controlunit.debug;
-    
-    debug_out = players.out;
-    p1_out = players.all_scores[15:0];
-    p2_out = players.all_scores[31:16];
-    debug_slowclock = slow_timer.value;
-    debug_vcclock = vc.out;
+    led_data = display_driver.out; //use it for alu_top
  
   }
 }

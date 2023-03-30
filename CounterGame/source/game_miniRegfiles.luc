@@ -7,20 +7,24 @@ module game_miniRegfiles (
     input data[16], // data in
     
     
-    input read_address_a[4], //address port a 
+    input read_address_a[4], //address port a
     input read_address_b[4], //address port b
     output out_a[16], //read port a
     output out_b[16], //read port b
-    
-    //debug
-    output out[16],
-    output all_scores[32],
-    output all_buttons[4],
-    output counter_out[16]
+    output dot_loc[16],
+    output column1output[16],
+    output column2output[16],
+    output column3output[16],
+    output column4output[16],
+    output column5output[16],
+    output column6output[16],
+    output column7output[16],
+    output column8output[16]
+  )
+  
+  {
 
-  ) 
-
-{
+  
   .clk(clk){
     .rst(rst){
       dff high_score[16];
@@ -41,9 +45,18 @@ module game_miniRegfiles (
       dff temp_var3[16];
     }
   }
-
-  always {
   
+  always {
+    dot_loc = dot_location.q;
+    column1output = column1.q; //hardcode these registers value for game_LED
+    column2output = column2.q;
+    column3output = column3.q;
+    column4output = column4.q;
+    column5output = column5.q;
+    column6output = column6.q;
+    column7output = column7.q;
+    column8output = column8.q;
+       
     //write port
     if (we){
       case(write_address){
@@ -66,57 +79,48 @@ module game_miniRegfiles (
       }
     }
     
-      
+    
     //read port a
     case(read_address_a){
-        b0000 : out_a = high_score.q;
-        b0001 : out_a = current_score.q;
-        b0010 : out_a = dot_location.q;
-        b0011 : out_a = slow_counter.q;
-        b0100 : out_a = collision.q;
-        b0101 : out_a = column1.q;
-        b0110 : out_a = column2.q;
-        b0111 : out_a = column3.q;
-        b1000 : out_a = column4.q;
-        b1001 : out_a = column5.q;
-        b1010 : out_a = column6.q;
-        b1011 : out_a = column7.q;
-        b1100 : out_a = column8.q;
-        b1101 : out_a = temp_var1.q;
-        b1110 : out_a = temp_var2.q;
-        b1111 : out_a = temp_var3.q;
-        default : out_a = 0;
+      b0000 : out_a = high_score.q;
+      b0001 : out_a = current_score.q;
+      b0010 : out_a = dot_location.q;
+      b0011 : out_a = slow_counter.q;
+      b0100 : out_a = collision.q;
+      b0101 : out_a = column1.q;
+      b0110 : out_a = column2.q;
+      b0111 : out_a = column3.q;
+      b1000 : out_a = column4.q;
+      b1001 : out_a = column5.q;
+      b1010 : out_a = column6.q;
+      b1011 : out_a = column7.q;
+      b1100 : out_a = column8.q;
+      b1101 : out_a = temp_var1.q;
+      b1110 : out_a = temp_var2.q;
+      b1111 : out_a = temp_var3.q;
+      default : out_a = 0;
     }
     
     //read port b
     case(read_address_b){
-        b0000 : out_b = high_score.q;
-        b0001 : out_b = current_score.q;
-        b0010 : out_b = dot_location.q;
-        b0011 : out_b = slow_counter.q;
-        b0100 : out_b = collision.q;
-        b0101 : out_b = column1.q;
-        b0110 : out_b = column2.q;
-        b0111 : out_b = column3.q;
-        b1000 : out_b = column4.q;
-        b1001 : out_b = column5.q;
-        b1010 : out_b = column6.q;
-        b1011 : out_b = column7.q;
-        b1100 : out_b = column8.q;
-        b1101 : out_b = temp_var1.q;
-        b1110 : out_b = temp_var2.q;
-        b1111 : out_b = temp_var3.q;
-        default : out_b = 0;
+      b0000 : out_b = high_score.q;
+      b0001 : out_b = current_score.q;
+      b0010 : out_b = dot_location.q;
+      b0011 : out_b = slow_counter.q;
+      b0100 : out_b = collision.q;
+      b0101 : out_b = column1.q;
+      b0110 : out_b = column2.q;
+      b0111 : out_b = column3.q;
+      b1000 : out_b = column4.q;
+      b1001 : out_b = column5.q;
+      b1010 : out_b = column6.q;
+      b1011 : out_b = column7.q;
+      b1100 : out_b = column8.q;
+      b1101 : out_b = temp_var1.q;
+      b1110 : out_b = temp_var2.q;
+      b1111 : out_b = temp_var3.q;
+      default : out_b = 0;
     }
-      
     
-    
-    //For debugging
-    all_scores[15:0] = p1_score.q;
-    all_scores[31:16] = p2_score.q;
-    all_buttons[1:0] = p1_buttonPress.q[1:0];
-    all_buttons[3:2] = p2_buttonPress.q[1:0];
-    out = current_timer.q;
-    counter_out = current_counter.q;
   }
 }

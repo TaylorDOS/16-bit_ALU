@@ -17,6 +17,8 @@ pin usb_rx USB_TX;
 pin usb_tx USB_RX;
 
 pin outled C49;
+pin main_button C48;
+pin reset_button C42;
 
 pin io_led[0][0] B21;
 pin io_led[0][1] B20;

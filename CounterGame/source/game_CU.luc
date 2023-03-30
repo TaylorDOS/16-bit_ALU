@@ -1,12 +1,10 @@
 module game_CU (
     input clk,  // clock
     input rst,  // reset
-    input increase_counter,
-    input decrease_timer,
     input regfile_datain[16], //direct reading of regfile data from read_address_b
     
-    input p1_button, //main button
-    input p2_button, //reset button
+    input main_button, //main button
+    input reset_button, //reset button
     
     output alufn[6],
     output asel[3],
@@ -215,13 +213,13 @@ module game_CU (
         bsel = b01;                              //constant 1
         we_regfile = 1;
         regfile_write_address = b0001;                 //reg 1 current score
-        game_fsm.d = game_fsm.START_SLOW_COUNTER;
+        game_fsm.d = game_fsm.IDLE;
      
       game_fsm.IDLE:
-        if (~p2_button){
+        if (reset_button){
           game_fsm.d = game_fsm.RESET;
         }
-        else if (~p1_button){
+        else if (main_button){
             game_fsm.d = game_fsm.CHECK_DOT_HIGHEST;
         }
         else{

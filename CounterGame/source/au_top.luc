@@ -3,6 +3,8 @@ module au_top (
     input rst_n,            // reset button (active low)
     output led [8],         // 8 user controllable LEDs
     input usb_rx,           // USB->Serial input
+    input main_button,      // main button input
+    input reset_button,     // reset button input
     output outled,          // data to LED strip
     output usb_tx,          // USB->Serial output
     output io_led [3][8],   // LEDs on IO Shield
@@ -14,9 +16,9 @@ module au_top (
   
   sig rst;                  // reset signal
   
-  const LEDCOLOR = {hFF0000, h00FF00, h0000FF}; // blue for the third LED, red for the second LED, green for the first LED (nearest to the connector)
+  //const LEDCOLOR = {hFF0000, h00FF00, h0000FF};
   
-  ws2812b_writer led_strip(#PIXEL_COUNT(64), .clk(clk), .rst(rst)); //set for 64 pixels
+  //ws2812b_writer led_strip(#PIXEL_COUNT(64), .clk(clk), .rst(rst)); //set for 64 pixels
   
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
@@ -28,11 +30,11 @@ module au_top (
     
     reset_conditioner reset_cond;
 
-    edge_detector edge_dt_btn_p1 (#RISE(1), #FALL(0));
-    edge_detector edge_dt_btn_p2(#RISE(1), #FALL(0));
+    edge_detector main_edge(#RISE(1), #FALL(0));
+    edge_detector reset_edge(#RISE(1), #FALL(0));
 
-    button_conditioner btn_cond_p1;
-    button_conditioner btn_cond_p2;
+    button_conditioner main_btn_cond;
+    button_conditioner reset_btn_cond;
     
     multi_dec_ctr dec_ctr;
   }
@@ -49,20 +51,13 @@ module au_top (
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
      
-    btn_cond_p1.in=io_button[4]; //to reduce the bouncing effects of your button 
-    btn_cond_p2.in=io_button[3];
-    edge_dt_btn_p1.in=btn_cond_p1.out; //get the edge of button press
-    edge_dt_btn_p2.in=btn_cond_p2.out;
+    main_btn_cond.in=main_button; //to reduce the bouncing effects of your button 
+    reset_btn_cond.in=reset_button;
+    main_edge.in=main_btn_cond.out; //get the edge of button press
+    reset_edge.in=reset_btn_cond.out;
     
-    gameMachine.p1_button = edge_dt_btn_p1.out;
-    gameMachine.p2_button = edge_dt_btn_p2.out;
-    
-    //show the counter value at led   
-    io_led[2] = gameMachine.debug_out; 
-    io_led[0] = gameMachine.p1_out;    
-    io_led[1] = gameMachine.p2_out;
-    led[0] = gameMachine.debug_slowclock;
-    led[1] = gameMachine.debug_vcclock;
+    gameMachine.main_button = main_edge.out;
+    gameMachine.reset_button = reset_edge.out;
     
     //update 7segments
     dec_ctr.inc = gameMachine.decimal_counter_increase;
@@ -71,8 +66,10 @@ module au_top (
     io_seg = ~seg.seg;
     io_sel = ~seg.sel;
     
-    led_strip.update=1; //sample write 
-    led_strip.color=LEDCOLOR[led_strip.pixel]; 
-    outled=led_strip.led;
+    outled = gameMachine.led_data;
+    
+    //led_strip.update=1; //sample write 
+    //led_strip.color=LEDCOLOR[led_strip.pixel]; 
+    //outled=led_strip.led;
   }
 }
