@@ -1,0 +1,45 @@
+module game_LED (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input pixels[64],
+    input color[1],
+    
+    output out
+    
+  ) {
+  
+  const COLOR = { // GRB in reverse
+    hf01000, // PURPLE
+    h000110, // ORANGE
+    h100000, // BLUE
+    h100010, // CYAN
+    h00f010, // YELLOW
+    h101000, // MAGENTA
+    h000010, // GREEN
+    h001000  // RED
+  };
+  
+  .clk(clk) {
+    .rst(rst) {
+      ws2812b_writer led_strip(#PIXEL_COUNT(64));
+    }
+  }
+  
+  decoder pixels_out(#WIDTH(6)); //what is this, log2 64 = 6
+  
+  sig p_color;
+  
+  always {
+    led_strip.update = 1;  // LED always updating
+    pixels_out.in = led_strip.pixel;
+    
+    p_color = |(pixels & pixels_out.out);
+    if (p_color) {
+      led_strip.color = COLOR[color];
+    } else {
+      led_strip.color = 0;
+    }
+    out = led_strip.led;
+  }
+}

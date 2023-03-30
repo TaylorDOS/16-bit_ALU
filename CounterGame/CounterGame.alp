@@ -3,6 +3,7 @@
   <files>
     <src>adder.luc</src>
     <src>game_CU.luc</src>
+    <src>game_LED.luc</src>
     <component>pipeline.luc</component>
     <src>ws2812b_writer.luc</src>
     <src>shifter.luc</src>
@@ -22,6 +23,7 @@
     <component>edge_detector.luc</component>
     <src>seven_seg.luc</src>
     <component>button_conditioner.luc</component>
+    <component>encoder.luc</component>
     <src>boolean.luc</src>
     <constraint>custom.acf</constraint>
     <constraint lib="true">au.xdc</constraint>
