@@ -69,7 +69,7 @@ module game_CU (
       
     case(game_fsm.q){
       game_fsm.RESET:
-        for (i=b0000;i<=b1111;i++){
+        for (i=b0000;i<=b1111;i++){   //will this work, for loop in a single clock cycle, it is used to clear all registers value
           alu_out_sel = b01;
           we_regfile = 1; 
           regfile_write_address = i;

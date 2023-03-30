@@ -629,3 +629,9 @@ Writing bitstream ./au_top_0.bit...
 Writing bitstream ./au_top_0.bin...
 INFO: [Vivado 12-1842] Bitgen Completed Successfully.
 INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-186] 'C:/Users/Taylor/Documents/GitHub/16-bit_ALU/CounterGame/work/vivado/CounterGame/CounterGame.runs/impl_1/usage_statistics_webtalk.xml' has been successfully sent to Xilinx on Thu Mar 30 21:32:21 2023. For additional details about this file, please refer to the WebTalk help file at D:/ComStruct/Vivado/2020.2/doc/webtalk_introduction.html.
+INFO: [Common 17-83] Releasing license: Implementation
+13 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 2060.301 ; gain = 416.969
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 30 21:32:21 2023...

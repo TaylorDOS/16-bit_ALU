@@ -1,7 +1,7 @@
 module game_LED (
     input clk,  // clock
     input rst,  // reset
-    input dot_location[16],
+    input dot_location[16], //if i want the dot to be  different colour, i need to render both dot and obstacles over here
     input column1output[16],
     input column2output[16],
     input column3output[16],
@@ -42,7 +42,7 @@ module game_LED (
   
   always {
     led_strip.update = 1;  // LED always updating
-    pixels_out.in = led_strip.pixel;
+    pixels_out.in = led_strip.pixel; //zig-zag pattern 
     row1 = column1output[7] + column2output[7]+column3output[7]+column4output[7]+column5output[7]+column6output[7]+column7output[7]+column8output[7];
     row3 = column1output[5] + column2output[5]+column3output[5]+column4output[5]+column5output[5]+column6output[5]+column7output[5]+column8output[5];
     row5 = column1output[3] + column2output[3]+column3output[3]+column4output[3]+column5output[3]+column6output[3]+column7output[3]+column8output[3];
@@ -53,7 +53,7 @@ module game_LED (
     row8 = column8output[0] + column7output[0]+column6output[0]+column5output[0]+column4output[0]+column3output[0]+column2output[0]+column1output[0];
     pixels = row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8;
     
-    p_color = |(pixels & pixels_out.out);
+    p_color = |(pixels & pixels_out.out); // how do I form the strings that supposed to sent to data line in led strip
     if (p_color) {
       led_strip.color = h100000;
     } else {

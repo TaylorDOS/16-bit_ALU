@@ -59,7 +59,7 @@ module au_top (
     gameMachine.main_button = main_edge.out;
     gameMachine.reset_button = reset_edge.out;
     
-    //update 7segments
+    //update 7segments - haven't started
     dec_ctr.inc = gameMachine.decimal_counter_increase;
     dec_ctr.rst = gameMachine.decimal_counter_rst;
     seg.values = dec_ctr.digits;
